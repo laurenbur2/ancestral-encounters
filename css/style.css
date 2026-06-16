@@ -9,6 +9,8 @@
   --forest-soft: #324569; /* lighter twilight */
   --terracotta: #cf6638;  /* burnt-orange sunset — accents, buttons */
   --gold: #e3a13e;        /* golden amber glow — highlights */
+  --jade: #2e6e57;        /* toad-medicine green — dark sections, marks */
+  --jade-deep: #224f3f;   /* deep jade */
   --sage: #7e8c5c;        /* saguaro green — secondary accent */
   --sand: #f6ede0;        /* warm sand — page background */
   --cream: #fdf7ee;       /* lightest sand — cards */
@@ -16,7 +18,10 @@
   --muted: #756a5b;       /* secondary text */
   --line: #e7d9c6;
 
-  --font-head: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  /* Diplomata SC: monumental, squared, Mesoamerican block caps (headings).
+     Cormorant Garamond: flowing serif for quotes. Inter: body text. */
+  --font-head: "Diplomata SC", "Arial Black", Impact, sans-serif;
+  --font-quote: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --maxw: 1080px;
   --radius: 14px;
@@ -38,15 +43,16 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-head);
-  font-weight: 600;
-  line-height: 1.15;
+  font-weight: 400;            /* Diplomata SC ships single-weight */
+  line-height: 1.32;
   color: var(--forest);
-  margin: 0 0 0.4em;
+  margin: 0 0 0.5em;
+  overflow-wrap: break-word;
 }
 
-h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
-h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
-h3 { font-size: 1.4rem; }
+h1 { font-size: clamp(1.5rem, 4.2vw, 2.7rem); }
+h2 { font-size: clamp(1.2rem, 3vw, 1.9rem); }
+h3 { font-size: 0.95rem; line-height: 1.4; }
 
 p { margin: 0 0 1.1em; }
 
@@ -80,18 +86,20 @@ img { max-width: 100%; display: block; }
 }
 .brand {
   font-family: var(--font-head);
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: clamp(0.7rem, 2.4vw, 1rem);
+  font-weight: 400;
   color: var(--forest);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  line-height: 1.2;
 }
 .brand:hover { text-decoration: none; }
 .brand .mark {
   width: 30px; height: 30px;
+  flex-shrink: 0;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, var(--gold), var(--terracotta));
+  background: radial-gradient(circle at 35% 30%, var(--gold), var(--jade));
   display: inline-block;
 }
 .nav-links {
@@ -192,7 +200,7 @@ img { max-width: 100%; display: block; }
   border-radius: 14px;
   display: grid; place-items: center;
   font-size: 1.5rem;
-  background: rgba(181, 97, 58, 0.12);
+  background: rgba(46, 110, 87, 0.13);
   margin-bottom: 18px;
 }
 .card h3 { color: var(--forest); }
@@ -222,15 +230,15 @@ img { max-width: 100%; display: block; }
 
 /* ---------- Quote / banner ---------- */
 .banner {
-  background: var(--forest);
+  background: linear-gradient(135deg, var(--forest), var(--jade));
   color: var(--cream);
   text-align: center;
   padding: clamp(60px, 9vw, 90px) 0;
 }
 .banner h2 { color: #fff; }
 .banner blockquote {
-  font-family: var(--font-head);
-  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+  font-family: var(--font-quote);
+  font-size: clamp(1.7rem, 3.8vw, 2.4rem);
   font-style: italic;
   max-width: 22ch;
   margin: 0 auto;
@@ -261,7 +269,7 @@ img { max-width: 100%; display: block; }
 
 /* ---------- Footer ---------- */
 .site-footer {
-  background: var(--forest);
+  background: linear-gradient(135deg, var(--forest), var(--jade-deep));
   color: rgba(255,255,255,0.85);
   padding: 56px 0 28px;
 }
@@ -270,7 +278,7 @@ img { max-width: 100%; display: block; }
   grid-template-columns: 2fr 1fr 1fr;
   gap: 40px;
 }
-.site-footer h4 { color: #fff; font-family: var(--font-head); font-size: 1.3rem; margin: 0 0 14px; }
+.site-footer h4 { color: #fff; font-family: var(--font-head); font-size: 0.9rem; line-height: 1.4; margin: 0 0 16px; }
 .site-footer a { color: rgba(255,255,255,0.85); }
 .site-footer a:hover { color: var(--gold); }
 .site-footer ul { list-style: none; padding: 0; margin: 0; }
@@ -286,7 +294,7 @@ img { max-width: 100%; display: block; }
 
 /* ---------- Page header (interior pages) ---------- */
 .page-head {
-  background: linear-gradient(135deg, var(--forest), var(--forest-soft));
+  background: linear-gradient(135deg, var(--forest), var(--jade));
   color: var(--cream);
   text-align: center;
   padding: clamp(70px, 11vw, 120px) 0 clamp(50px, 8vw, 80px);
