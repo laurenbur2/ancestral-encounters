@@ -2,15 +2,19 @@
    Edit the colors below to reskin the whole site at once. */
 
 :root {
-  --forest: #2f4a3c;      /* deep green — headers, footer */
-  --forest-soft: #46624f;
-  --terracotta: #b5613a;  /* warm clay — accents, buttons */
-  --gold: #c9a24b;        /* highlights */
-  --sand: #f4ece0;        /* page background */
-  --cream: #fbf7f0;       /* cards */
-  --ink: #2b2622;         /* body text */
-  --muted: #6c6258;       /* secondary text */
-  --line: #e3d8c8;
+  /* Palette drawn from the Sonoran desert + Sea of Cortez photos:
+     twilight indigo sky, burnt-orange sunset, golden amber glow,
+     saguaro sage, and warm desert sand. */
+  --forest: #233150;      /* twilight indigo — dark headers, footer, banners */
+  --forest-soft: #324569; /* lighter twilight */
+  --terracotta: #cf6638;  /* burnt-orange sunset — accents, buttons */
+  --gold: #e3a13e;        /* golden amber glow — highlights */
+  --sage: #7e8c5c;        /* saguaro green — secondary accent */
+  --sand: #f6ede0;        /* warm sand — page background */
+  --cream: #fdf7ee;       /* lightest sand — cards */
+  --ink: #2b2620;         /* body text */
+  --muted: #756a5b;       /* secondary text */
+  --line: #e7d9c6;
 
   --font-head: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -123,7 +127,7 @@ img { max-width: 100%; display: block; }
   cursor: pointer;
   transition: transform 0.15s ease, background 0.2s ease;
 }
-.btn:hover { background: #9d4f2d; text-decoration: none; transform: translateY(-2px); }
+.btn:hover { background: #b0511f; text-decoration: none; transform: translateY(-2px); }
 .btn-outline {
   background: transparent;
   color: var(--forest);
@@ -137,7 +141,7 @@ img { max-width: 100%; display: block; }
   padding: clamp(80px, 14vw, 150px) 0;
   text-align: center;
   background:
-    linear-gradient(rgba(47,74,60,0.62), rgba(47,74,60,0.72)),
+    linear-gradient(rgba(20,28,48,0.30), rgba(35,49,80,0.62)),
     url("../images/hero.jpg") center/cover no-repeat,
     linear-gradient(135deg, var(--forest), var(--forest-soft));
   color: var(--cream);
@@ -202,7 +206,13 @@ img { max-width: 100%; display: block; }
   gap: 56px;
   align-items: center;
 }
-.split img { border-radius: var(--radius); box-shadow: var(--shadow); }
+.split img {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
 .split .placeholder {
   aspect-ratio: 4/3;
   border-radius: var(--radius);
