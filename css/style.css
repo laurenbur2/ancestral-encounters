@@ -18,10 +18,11 @@
   --muted: #756a5b;       /* secondary text */
   --line: #e7d9c6;
 
-  /* --font-display: tall, condensed, hand-drawn-style display face for big
-     headings + logo (closest free match to Napili). Swap this one line
-     (and the Google Fonts <link>) to change it — e.g. to a licensed Napili. */
-  --font-display: "Staatliches", "Oswald", "Cormorant Garamond", sans-serif;
+  /* --font-display: tall, condensed, hand-painted display face for big
+     headings + logo (closest free match to Napili's hand-drawn look). Swap
+     this one line (and the Google Fonts <link>) to change it — e.g. to a
+     licensed Napili. */
+  --font-display: "Protest Strike", "Staatliches", "Cormorant Garamond", sans-serif;
   --font-head: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-quote: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-body: "Abel", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
