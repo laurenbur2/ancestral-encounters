@@ -18,9 +18,9 @@
   --muted: #756a5b;       /* secondary text */
   --line: #e7d9c6;
 
-  /* --font-display: official brand font for the logo, hero, and headings.
-     Swap this one line (and the Google Fonts <link>) to change it. */
-  --font-display: "Londrina Solid", "Oswald", sans-serif;
+  /* --font-display: official brand font for the logo, hero, and headings
+     (Buick-style). Swap this one line (and the Google Fonts <link>) to change it. */
+  --font-display: "Big Shoulders Stencil Display", "Oswald", sans-serif;
   --font-head: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-quote: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-body: "Abel", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -60,8 +60,8 @@ h3 { font-size: 1.4rem; }
 /* Tribal display face on the big headings (h3/subheads stay serif). */
 h1, h2 {
   font-family: var(--font-display);
-  font-weight: 400;        /* Londrina Solid */
-  line-height: 1.18;
+  font-weight: 800;        /* Big Shoulders Stencil */
+  line-height: 1.12;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
@@ -98,8 +98,8 @@ img { max-width: 100%; display: block; }
 }
 .brand {
   font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 400;
+  font-size: 1.3rem;
+  font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--forest);
@@ -139,7 +139,7 @@ img { max-width: 100%; display: block; }
   background: var(--terracotta);
   color: #fff;
   padding: 13px 28px;
-  border-radius: 0;
+  border-radius: 6px;
   font-weight: 600;
   font-size: 1rem;
   border: none;
