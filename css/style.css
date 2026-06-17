@@ -19,10 +19,9 @@
   --muted: #756a5b;       /* secondary text */
   --line: #e7d9c6;
 
-  /* --font-display: official brand font for the logo, hero, and headings.
-     Solid Big Shoulders (no stencil cuts). Swap this one line (and the
-     Google Fonts <link>) to change it. */
-  --font-display: "Big Shoulders Display", "Oswald", sans-serif;
+  /* --font-display: elegant, refined display caps for the hero + headings.
+     Swap this one line (and the Google Fonts <link>) to change it. */
+  --font-display: "Marcellus", "Cormorant Garamond", serif;
   --font-head: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-quote: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-body: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -62,9 +61,9 @@ h3 { font-size: 1.4rem; }
 /* Tribal display face on the big headings (h3/subheads stay serif). */
 h1, h2 {
   font-family: var(--font-display);
-  font-weight: 800;        /* Big Shoulders Stencil */
-  line-height: 1.12;
-  letter-spacing: 0.02em;
+  font-weight: 400;        /* Marcellus is single-weight */
+  line-height: 1.16;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
