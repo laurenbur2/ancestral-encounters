@@ -6,6 +6,18 @@
   if (y) y.textContent = new Date().getFullYear();
 })();
 
+// Home page: solidify the transparent header once the user scrolls past the top
+(function () {
+  if (!document.body.classList.contains("home")) return;
+  var header = document.querySelector(".site-header");
+  if (!header) return;
+  function onScroll() {
+    header.classList.toggle("scrolled", window.scrollY > 40);
+  }
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+})();
+
 // Mobile nav toggle
 (function () {
   var toggle = document.querySelector(".nav-toggle");

@@ -88,6 +88,22 @@ img { max-width: 100%; display: block; }
   background: rgba(251, 247, 240, 0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
+  transition: background .35s ease, border-color .35s ease, backdrop-filter .35s ease;
+}
+
+/* Home page: let the hero image run to the very top behind a transparent
+   header; it solidifies to cream once the user scrolls (see js/main.js). */
+body.home .site-header {
+  position: fixed;
+  left: 0; right: 0;
+  background: transparent;
+  border-bottom-color: transparent;
+  backdrop-filter: none;
+}
+body.home .site-header.scrolled {
+  background: rgba(251, 247, 240, 0.92);
+  border-bottom-color: var(--line);
+  backdrop-filter: blur(8px);
 }
 .nav {
   display: flex;
@@ -168,9 +184,11 @@ img { max-width: 100%; display: block; }
      the middle, deep shadow at the base so text + buttons read crisp. */
   background:
     linear-gradient(180deg,
-      rgba(20,28,48,0.50) 0%,
-      rgba(47,40,30,0.10) 38%,
-      rgba(46,110,87,0.18) 72%,
+      var(--cream) 0%,
+      rgba(253,247,238,0.55) 9%,
+      rgba(253,247,238,0) 24%,
+      rgba(20,28,48,0.10) 44%,
+      rgba(46,110,87,0.16) 74%,
       rgba(13,16,22,0.86) 100%),
     url("../images/hero.jpg") center/cover no-repeat,
     linear-gradient(135deg, var(--forest), var(--forest-soft));
