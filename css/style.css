@@ -155,21 +155,34 @@ body.home .site-header.scrolled {
   display: inline-block;
   background: var(--terracotta);
   color: #fff;
-  padding: 13px 28px;
+  padding: 14px 30px;
   border-radius: 6px;
   font-weight: 600;
   font-size: 1rem;
-  border: none;
+  letter-spacing: 0.03em;
+  border: 1.5px solid transparent;
   cursor: pointer;
-  transition: transform 0.15s ease, background 0.2s ease;
+  transition: background .25s ease, border-color .25s ease, color .25s ease,
+              transform .2s ease, box-shadow .25s ease;
 }
-.btn:hover { background: #b0511f; text-decoration: none; transform: translateY(-2px); }
+.btn:hover {
+  background: #a8512c;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(40,28,20,0.22);
+}
 .btn-outline {
   background: transparent;
   color: var(--forest);
-  border: 1.5px solid var(--forest);
+  border: 1.5px solid rgba(43,38,32,0.28);
 }
-.btn-outline:hover { background: var(--jade); border-color: var(--jade); color: #fff; }
+.btn-outline:hover {
+  background: rgba(43,38,32,0.05);
+  border-color: var(--forest);
+  color: var(--forest);
+  transform: translateY(-2px);
+  box-shadow: none;
+}
 
 /* ---------- Hero ---------- */
 .hero {
@@ -185,11 +198,11 @@ body.home .site-header.scrolled {
   background:
     linear-gradient(180deg,
       var(--cream) 0%,
-      rgba(253,247,238,0.55) 9%,
-      rgba(253,247,238,0) 24%,
-      rgba(34,79,63,0.18) 42%,
-      rgba(46,110,87,0.42) 68%,
-      rgba(22,46,36,0.90) 100%),
+      rgba(253,247,238,0.5) 8%,
+      rgba(253,247,238,0) 22%,
+      rgba(28,22,18,0) 46%,
+      rgba(24,18,14,0.34) 74%,
+      rgba(16,12,9,0.72) 100%),
     url("../images/hero.jpg") center/cover no-repeat,
     linear-gradient(135deg, var(--forest), var(--forest-soft));
   color: var(--cream);
@@ -241,8 +254,8 @@ body.home .site-header.scrolled {
   margin: 0 auto 1.8em;
   color: rgba(255,255,255,0.92);
 }
-.hero .btn-outline { color: #fff; border-color: rgba(255,255,255,0.8); }
-.hero .btn-outline:hover { background: #fff; color: var(--forest); }
+.hero .btn-outline { color: #fff; border-color: rgba(255,255,255,0.5); }
+.hero .btn-outline:hover { background: rgba(255,255,255,0.14); border-color: #fff; color: #fff; }
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.22em;
