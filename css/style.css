@@ -662,6 +662,12 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
   text-align: center;
   padding: clamp(70px, 11vw, 120px) 0 clamp(50px, 8vw, 80px);
 }
+/* photo-backed page-head (Infinity School) — brand-tinted overlay keeps text legible */
+.page-head.page-head-img {
+  background:
+    linear-gradient(120deg, rgba(33,46,72,0.74), rgba(34,79,63,0.66)),
+    url("../images/infinity-hero.jpg") center 28% / cover no-repeat;
+}
 .page-head h1 { color: #fff; }
 .page-head p { color: rgba(255,255,255,0.9); max-width: 56ch; margin: 0 auto; font-size: 1.15rem; }
 /* small gold subtitle beneath a page-head title (e.g. "Bufo Facilitator Training") */
