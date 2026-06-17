@@ -340,6 +340,27 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
   margin: 0 auto;
   filter: drop-shadow(0 4px 18px rgba(253,247,238,0.6));
 }
+/* Centered brand lockup: logo + wordmark, large */
+.hero-lockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 2.4vw, 34px);
+  flex-wrap: wrap;
+}
+.hero-lockup .hero-logo {
+  width: clamp(82px, 12vw, 150px);
+}
+.hero-wordmark {
+  font-family: var(--font-body);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: clamp(1.5rem, 4.6vw, 3.1rem);
+  line-height: 1.04;
+  color: var(--forest);
+  text-shadow: 0 1px 16px rgba(253,247,238,0.7);
+}
 .hero-content { width: 100%; }
 .hero .hero-kicker, .hero .hero-tagline {
   font-family: var(--font-body);
