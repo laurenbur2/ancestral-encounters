@@ -263,7 +263,7 @@ body.intro-done .hero-content {
 .hero-toad {
   width: 52px; height: 65px;
   margin: 28px auto 0;
-  background: url("../images/toad-white.png") center / contain no-repeat;
+  background: url("../images/white-toad.png") center / contain no-repeat;
 }
 
 /* Welcome splash — home only, shown once per session (js-controlled) */
@@ -284,7 +284,7 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
 }
 .preloader-toad {
   width: 92px; height: 115px;
-  background: url("../images/toad-white.png") center / contain no-repeat;
+  background: url("../images/white-toad.png") center / contain no-repeat;
 }
 .preloader-word {
   margin: 24px 0 0;
@@ -564,7 +564,7 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 .toad-divider {
   width: 70px; height: 88px;
   margin: 12px auto;
-  background: url("../images/toad-black.png") center / contain no-repeat;
+  background: url("../images/Black-toad.png") center / contain no-repeat;
 }
 
 /* White toad crowning the footer */
@@ -574,7 +574,7 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   top: 36px; left: 50%;
   transform: translateX(-50%);
   width: 60px; height: 76px;
-  background: url("../images/toad-white.png") center / contain no-repeat;
+  background: url("../images/white-toad.png") center / contain no-repeat;
   opacity: 0.82;
 }
 
