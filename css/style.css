@@ -336,30 +336,27 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
 
 /* AWKN-style centered hero: small kicker, logo centerpiece, small tagline */
 .hero-logo {
-  width: clamp(118px, 17vw, 168px);
+  width: clamp(210px, 30vw, 340px);
   height: auto;
   display: block;
   margin: 0 auto;
-  filter: drop-shadow(0 6px 26px rgba(15,12,18,0.45));
+  filter: drop-shadow(0 6px 28px rgba(15,12,18,0.5));
 }
-.hero-kicker, .hero-tagline {
+.hero-content { width: 100%; }
+.hero .hero-kicker, .hero .hero-tagline {
   font-family: var(--font-body);
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.26em;
-  font-size: clamp(0.62rem, 1.15vw, 0.78rem);
+  letter-spacing: 0.12em;
+  font-size: clamp(0.46rem, 2.5vw, 0.8rem);
   color: #fff;
   max-width: none;
-  line-height: 1.6;
+  white-space: nowrap;
+  line-height: 1.5;
   text-shadow: 0 2px 18px rgba(15,12,18,0.6);
 }
-.hero-kicker { margin: 0 0 34px; }
-.hero-tagline { margin: 34px 0 0; }
-.hero .hero-kicker, .hero .hero-tagline {
-  max-width: 32ch;
-  margin-left: auto;
-  margin-right: auto;
-}
+.hero-kicker { margin: 0 0 30px; }
+.hero-tagline { margin: 30px 0 0; }
 .hero p {
   font-size: 1.25rem;
   max-width: 56ch;
