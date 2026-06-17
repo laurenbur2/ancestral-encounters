@@ -80,6 +80,15 @@ document.documentElement.classList.add("js");
   links.querySelectorAll("a").forEach(function (a) {
     a.addEventListener("click", function () { setOpen(false); });
   });
+
+  // Collapsible sub-menu ("Teachings & Journeys") — toggle open on click/tap
+  var groupTitle = links.querySelector(".nav-group-title");
+  if (groupTitle) {
+    groupTitle.addEventListener("click", function () {
+      var open = groupTitle.parentNode.classList.toggle("open");
+      groupTitle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") setOpen(false);
   });
