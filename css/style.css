@@ -345,21 +345,19 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(14px, 2.2vw, 30px);
-  flex-wrap: nowrap;
+  gap: clamp(16px, 2.4vw, 34px);
+  flex-wrap: wrap;
 }
 .hero-lockup .hero-logo {
-  width: clamp(74px, 11vw, 140px);
-  flex-shrink: 0;
+  width: clamp(82px, 12vw, 150px);
 }
 .hero-wordmark {
   font-family: var(--font-body);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  font-size: clamp(1.35rem, 4.2vw, 3rem);
-  line-height: 1.06;
-  text-align: left;
+  font-size: clamp(1.5rem, 4.6vw, 3.1rem);
+  line-height: 1.04;
   color: var(--forest);
   text-shadow: 0 1px 16px rgba(253,247,238,0.7);
 }
