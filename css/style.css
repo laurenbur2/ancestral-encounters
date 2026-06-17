@@ -412,7 +412,7 @@ body.home .site-header.scrolled {
     linear-gradient(rgba(14,18,26,0.84), rgba(14,18,26,0.9)),
     url("../images/desert-beach.jpg") center 35% / cover no-repeat;
   color: rgba(255,255,255,0.78);
-  padding: 88px 0 36px;
+  padding: 128px 0 36px;
 }
 .footer-grid {
   display: grid;
@@ -460,6 +460,35 @@ body.home .site-header.scrolled {
 .page-head p { color: rgba(255,255,255,0.9); max-width: 56ch; margin: 0 auto; font-size: 1.15rem; }
 
 /* ---------- Responsive ---------- */
+/* Scroll-reveal: elements fade + rise as they enter the viewport */
+.reveal { transition: opacity .85s cubic-bezier(.2,.7,.2,1), transform .85s cubic-bezier(.2,.7,.2,1); }
+html.js .reveal { opacity: 0; transform: translateY(30px); }
+html.js .reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Bufo (toad) motif — recurring accent dispersed between sections */
+.toad-divider {
+  width: 70px; height: 88px;
+  margin: 12px auto;
+  background: url("../images/toad-black.png") center / contain no-repeat;
+}
+
+/* White toad crowning the footer */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 36px; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 76px;
+  background: url("../images/toad-white.png") center / contain no-repeat;
+  opacity: 0.82;
+}
+
+/* Minimal hero: make the lone tagline a touch more present */
+.hero .eyebrow { font-size: clamp(0.85rem, 1.7vw, 1.12rem); margin-bottom: 0; }
+
 @media (max-width: 780px) {
   .split { grid-template-columns: 1fr; gap: 32px; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
