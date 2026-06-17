@@ -409,27 +409,46 @@ body.home .site-header.scrolled {
 
 /* ---------- Footer ---------- */
 .site-footer {
-  background: linear-gradient(120deg, var(--terracotta), var(--jade-deep));
-  color: rgba(255,255,255,0.85);
-  padding: 56px 0 28px;
+  position: relative;
+  background:
+    linear-gradient(rgba(14,18,26,0.84), rgba(14,18,26,0.9)),
+    url("../images/desert-beach.jpg") center 35% / cover no-repeat;
+  color: rgba(255,255,255,0.78);
+  padding: 88px 0 36px;
 }
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  gap: 40px;
+  gap: 48px;
 }
-.site-footer h4 { color: #fff; font-family: var(--font-head); font-size: 1.3rem; margin: 0 0 14px; }
-.site-footer a { color: rgba(255,255,255,0.85); }
-.site-footer a:hover { color: var(--gold); }
+.site-footer h4 {
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0 0 20px;
+}
+/* brand column heading reads as the wordmark, not a small label */
+.footer-grid > div:first-child h4 {
+  color: #fff;
+  font-size: 0.98rem;
+  letter-spacing: 0.24em;
+}
+.site-footer p { color: rgba(255,255,255,0.7); max-width: 34ch; }
+.site-footer a { color: rgba(255,255,255,0.82); transition: color .2s ease; }
+.site-footer a:hover { color: var(--gold); text-decoration: none; }
 .site-footer ul { list-style: none; padding: 0; margin: 0; }
-.site-footer li { margin-bottom: 8px; }
+.site-footer li { margin-bottom: 12px; }
 .footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.15);
-  margin-top: 40px;
-  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.14);
+  margin-top: 56px;
+  padding-top: 26px;
   text-align: center;
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.6);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.55);
 }
 
 /* ---------- Page header (interior pages) ---------- */
