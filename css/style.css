@@ -115,15 +115,15 @@ body.home .site-header.scrolled {
   margin: 0 auto;
 }
 .brand {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
+  font-family: var(--font-body);
+  font-size: clamp(0.78rem, 1.5vw, 1rem);
+  font-weight: 500;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--forest);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
 }
 .brand:hover { text-decoration: none; }
 .brand .mark {
