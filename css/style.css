@@ -169,7 +169,7 @@ body.home .site-header.scrolled {
   color: var(--forest);
   border: 1.5px solid var(--forest);
 }
-.btn-outline:hover { background: var(--forest); color: #fff; }
+.btn-outline:hover { background: var(--jade); border-color: var(--jade); color: #fff; }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -187,9 +187,9 @@ body.home .site-header.scrolled {
       var(--cream) 0%,
       rgba(253,247,238,0.55) 9%,
       rgba(253,247,238,0) 24%,
-      rgba(20,28,48,0.10) 44%,
-      rgba(46,110,87,0.16) 74%,
-      rgba(13,16,22,0.86) 100%),
+      rgba(34,79,63,0.18) 42%,
+      rgba(46,110,87,0.42) 68%,
+      rgba(22,46,36,0.90) 100%),
     url("../images/hero.jpg") center/cover no-repeat,
     linear-gradient(135deg, var(--forest), var(--forest-soft));
   color: var(--cream);
@@ -256,7 +256,7 @@ body.home .site-header.scrolled {
 .section { padding: clamp(60px, 9vw, 100px) 0; }
 .section.alt { background: var(--cream); }
 .section-head { text-align: center; max-width: 60ch; margin: 0 auto 3rem; }
-.section-head .eyebrow { color: var(--terracotta); }
+.section-head .eyebrow { color: var(--jade); }
 .section-head p { color: var(--muted); }
 
 /* ---------- Card grid ---------- */
