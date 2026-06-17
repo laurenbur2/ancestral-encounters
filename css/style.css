@@ -11,6 +11,7 @@
   --gold: #e3a13e;        /* golden amber glow — highlights */
   --jade: #2e6e57;        /* toad-medicine green — dark sections, marks */
   --jade-deep: #224f3f;   /* deep jade */
+  --turquoise: #2f8d86;   /* Sea of Cortez — Comcaac coastal accent */
   --sage: #7e8c5c;        /* saguaro green — secondary accent */
   --sand: #f6ede0;        /* warm sand — page background */
   --cream: #fdf7ee;       /* lightest sand — cards */
@@ -218,13 +219,15 @@ body.home .site-header.scrolled {
   to   { opacity: 1; transform: none; }
 }
 /* gold accent rule under centered eyebrows */
+/* Geometric diamond divider (echoes the Otac logo + Comcaac geometry):
+   gold flanking lines with a turquoise Sea-of-Cortez diamond. */
 .hero .eyebrow::after,
 .section-head .eyebrow::after {
   content: "";
   display: block;
-  width: 54px; height: 2px;
-  margin: 16px auto 0;
-  background: var(--gold);
+  width: 74px; height: 12px;
+  margin: 18px auto 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='74' height='12' viewBox='0 0 74 12'%3E%3Cline x1='0' y1='6' x2='28' y2='6' stroke='%23e3a13e' stroke-width='1.5'/%3E%3Cline x1='46' y1='6' x2='74' y2='6' stroke='%23e3a13e' stroke-width='1.5'/%3E%3Crect x='32' y='3' width='6' height='6' fill='none' stroke='%232f8d86' stroke-width='1.5' transform='rotate(45 35 6)'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 /* subtle scroll cue */
 .scroll-cue {
