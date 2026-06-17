@@ -662,11 +662,21 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
   text-align: center;
   padding: clamp(70px, 11vw, 120px) 0 clamp(50px, 8vw, 80px);
 }
-/* photo-backed page-head (Infinity School) — brand-tinted overlay keeps text legible */
+/* photo-backed page-head (Infinity School) — taller, image shown in true color.
+   No color tint; only a faint neutral darken + text-shadow so text stays legible. */
 .page-head.page-head-img {
   background:
-    linear-gradient(120deg, rgba(33,46,72,0.74), rgba(34,79,63,0.66)),
-    url("../images/infinity-hero.jpg") center 28% / cover no-repeat;
+    linear-gradient(rgba(0,0,0,0.16), rgba(0,0,0,0.16)),
+    url("../images/infinity-hero.jpg") center 30% / cover no-repeat;
+  min-height: 74vh;
+  display: grid;
+  place-items: center;
+}
+.page-head.page-head-img .container { width: 100%; }
+.page-head.page-head-img .eyebrow,
+.page-head.page-head-img h1,
+.page-head.page-head-img p {
+  text-shadow: 0 2px 16px rgba(0,0,0,0.55);
 }
 .page-head h1 { color: #fff; }
 .page-head p { color: rgba(255,255,255,0.9); max-width: 56ch; margin: 0 auto; font-size: 1.15rem; }
