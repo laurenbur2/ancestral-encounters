@@ -538,6 +538,26 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
   box-shadow: var(--shadow);
 }
 
+/* photo gallery (Infinity School) */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.gallery img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+@media (max-width: 700px) {
+  .gallery { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 440px) {
+  .gallery { grid-template-columns: 1fr; }
+}
+
 /* small green note under the curriculum heading */
 .section-head .curriculum-meetups {
   color: var(--jade);
