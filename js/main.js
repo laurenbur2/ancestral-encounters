@@ -1,6 +1,22 @@
 // Ancestral Encounters — small site interactions
 document.documentElement.classList.add("js");
 
+// Welcome splash (home only, once per session) -> reveal hero
+(function () {
+  var pre = document.getElementById("preloader");
+  if (!pre) return;
+  var seen = false;
+  try { seen = sessionStorage.getItem("ae-welcomed") === "1"; } catch (e) {}
+  if (seen) {
+    if (pre.parentNode) pre.parentNode.removeChild(pre);
+    document.body.classList.add("intro-done");
+    return;
+  }
+  try { sessionStorage.setItem("ae-welcomed", "1"); } catch (e) {}
+  setTimeout(function () { document.body.classList.add("intro-done"); }, 1800);
+  setTimeout(function () { if (pre.parentNode) pre.parentNode.removeChild(pre); }, 2750);
+})();
+
 // Scroll-reveal: fade + rise elements as they enter the viewport
 (function () {
   var els = document.querySelectorAll(".reveal");
