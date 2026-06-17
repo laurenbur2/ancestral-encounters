@@ -13,8 +13,8 @@ document.documentElement.classList.add("js");
     return;
   }
   try { sessionStorage.setItem("ae-welcomed", "1"); } catch (e) {}
-  setTimeout(function () { document.body.classList.add("intro-done"); }, 2000);
-  setTimeout(function () { if (pre.parentNode) pre.parentNode.removeChild(pre); }, 2950);
+  setTimeout(function () { document.body.classList.add("intro-done"); }, 3000);
+  setTimeout(function () { if (pre.parentNode) pre.parentNode.removeChild(pre); }, 3950);
 })();
 
 // Scroll-reveal: fade + rise elements as they enter the viewport

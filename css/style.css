@@ -159,6 +159,35 @@ body.home .site-header.scrolled {
 .nav-links a:hover { color: var(--terracotta); text-decoration: none; }
 .nav-links .btn { margin-top: 8px; }
 
+/* Grouped nav item with a sub-menu (Teachings & Journeys) */
+.nav-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.nav-group-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+.nav-sub {
+  list-style: none;
+  margin: 0;
+  padding: 2px 0 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-left: 1px solid var(--line);
+}
+.nav-sub a {
+  font-size: 1.02rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.nav-sub a:hover { color: var(--terracotta); }
+
 /* Backdrop behind the drawer (created in js/main.js) */
 .nav-backdrop {
   position: fixed; inset: 0;
