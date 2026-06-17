@@ -432,7 +432,10 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
 }
 
 /* ---------- Sections ---------- */
-.section { padding: clamp(60px, 9vw, 100px) 0; }
+.section { padding: clamp(48px, 6.5vw, 78px) 0; }
+/* short, centered text blocks (e.g. the intro) need far less breathing room
+   beneath them so they don't leave a big void before the next section */
+.section-tight { padding-bottom: clamp(20px, 3vw, 36px); }
 .section.alt { background: var(--cream); }
 .section-head { text-align: center; max-width: 60ch; margin: 0 auto 3rem; }
 .section-head .eyebrow { color: var(--jade); }
