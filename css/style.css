@@ -7,7 +7,7 @@
      saguaro sage, and warm desert sand. */
   --forest: #233150;      /* twilight indigo — dark headers, footer, banners */
   --forest-soft: #324569; /* lighter twilight */
-  --terracotta: #cf6638;  /* burnt-orange sunset — accents, buttons */
+  --terracotta: #a85e3c;  /* muted, gallery-grade clay — accents, buttons */
   --gold: #e3a13e;        /* golden amber glow — highlights */
   --jade: #2e6e57;        /* toad-medicine green — dark sections, marks */
   --jade-deep: #224f3f;   /* deep jade */
@@ -167,7 +167,7 @@ body.home .site-header.scrolled {
               transform .2s ease, box-shadow .25s ease;
 }
 .btn:hover {
-  background: #a8512c;
+  background: #8c4e30;
   text-decoration: none;
   transform: translateY(-2px);
   box-shadow: 0 12px 26px rgba(40,28,20,0.22);
