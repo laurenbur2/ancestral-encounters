@@ -736,17 +736,6 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   background: url("../images/Black-toad.png") center / contain no-repeat;
 }
 
-/* White toad crowning the footer */
-.site-footer::before {
-  content: "";
-  position: absolute;
-  top: 36px; left: 50%;
-  transform: translateX(-50%);
-  width: 60px; height: 76px;
-  background: url("../images/white-toad.png") center / contain no-repeat;
-  opacity: 0.82;
-}
-
 /* Minimal hero: make the lone tagline a touch more present */
 .hero .eyebrow { font-size: clamp(0.85rem, 1.7vw, 1.12rem); margin-bottom: 0; }
 
