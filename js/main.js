@@ -18,14 +18,34 @@
   window.addEventListener("scroll", onScroll, { passive: true });
 })();
 
-// Mobile nav toggle
+// Slide-in sidebar drawer (three-bar toggle, backdrop, esc, scroll lock)
 (function () {
   var toggle = document.querySelector(".nav-toggle");
   var links = document.querySelector(".nav-links");
   if (!toggle || !links) return;
-  toggle.addEventListener("click", function () {
-    var open = links.classList.toggle("open");
+
+  var backdrop = document.createElement("div");
+  backdrop.className = "nav-backdrop";
+  document.body.appendChild(backdrop);
+
+  function setOpen(open) {
+    toggle.classList.toggle("open", open);
+    links.classList.toggle("open", open);
+    backdrop.classList.toggle("open", open);
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.style.overflow = open ? "hidden" : "";
+  }
+
+  toggle.addEventListener("click", function () {
+    setOpen(!links.classList.contains("open"));
+  });
+  backdrop.addEventListener("click", function () { setOpen(false); });
+  links.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", function () { setOpen(false); });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") setOpen(false);
   });
 })();
 
