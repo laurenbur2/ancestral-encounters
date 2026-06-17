@@ -538,25 +538,28 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
   box-shadow: var(--shadow);
 }
 
-/* photo gallery (Infinity School) */
+/* photo gallery (Infinity School) — horizontal scroll carousel.
+   Uniform height + auto width = a film strip that fits mixed orientations. */
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding-bottom: 16px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-color: var(--terracotta) var(--line);
 }
 .gallery img {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
+  height: clamp(280px, 40vw, 430px);
+  width: auto;
+  flex: 0 0 auto;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  scroll-snap-align: start;
 }
-@media (max-width: 700px) {
-  .gallery { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 440px) {
-  .gallery { grid-template-columns: 1fr; }
-}
+.gallery::-webkit-scrollbar { height: 8px; }
+.gallery::-webkit-scrollbar-track { background: var(--line); border-radius: 10px; }
+.gallery::-webkit-scrollbar-thumb { background: var(--terracotta); border-radius: 10px; }
 
 /* small green note under the curriculum heading */
 .section-head .curriculum-meetups {
