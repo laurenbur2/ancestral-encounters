@@ -33,8 +33,10 @@
 * { box-sizing: border-box; }
 
 /* clip (not hidden) so the off-canvas drawer can't create a horizontal
-   scrollbar, while keeping the sticky header working */
-html { scroll-behavior: smooth; overflow-x: clip; }
+   scrollbar or a sliver of background on the side, while keeping the
+   sticky header working (clip does not create a scroll container) */
+html, body { overflow-x: clip; }
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
