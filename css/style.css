@@ -538,6 +538,16 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
   box-shadow: var(--shadow);
 }
 
+/* small green note under the curriculum heading */
+.section-head .curriculum-meetups {
+  color: var(--jade);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin: 0 0 1.2em;
+}
+
 /* 12-month curriculum — 4 across, 3 rows */
 .curriculum {
   margin: 0;
