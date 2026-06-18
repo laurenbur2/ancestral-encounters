@@ -64,6 +64,12 @@ document.documentElement.classList.add("js");
   backdrop.className = "nav-backdrop";
   document.body.appendChild(backdrop);
 
+  // Move the drawer out of the header. The header uses backdrop-filter, which
+  // traps position:fixed descendants in its containing block — so when the page
+  // is scrolled the open drawer renders off-screen at the document top. As a
+  // direct child of <body> it positions relative to the viewport instead.
+  document.body.appendChild(links);
+
   function setOpen(open) {
     toggle.classList.toggle("open", open);
     links.classList.toggle("open", open);
