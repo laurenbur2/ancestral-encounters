@@ -227,12 +227,14 @@ body.home .site-header.scrolled {
   color: var(--muted);
 }
 .nav-sub a:hover { color: var(--terracotta); }
+.nav-sub a { line-height: 1.25; }
 .nav-sub-note {
   display: block;
   font-size: 0.78rem;
   font-style: italic;
-  color: var(--muted);
-  margin-top: 4px;
+  color: var(--jade);
+  margin-top: 1px;
+  line-height: 1.3;
 }
 
 /* Backdrop behind the drawer (created in js/main.js) */
@@ -625,6 +627,8 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
 .back-fab-arrow { font-size: 1.05rem; line-height: 1; }
 @media (max-width: 600px) {
   .back-fab { top: 80px; left: 12px; padding: 8px 14px; font-size: 0.76rem; }
+  /* shorter photo heroes on phones (offering pages) */
+  .page-head-img { min-height: 52vh; }
 }
 
 .page-head .hero-creds {
