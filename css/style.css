@@ -906,5 +906,9 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
     margin-right: auto;
     aspect-ratio: 4 / 3;
   }
-  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .site-footer { padding-top: 64px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 22px 24px; }
+  .footer-grid > div:first-child { grid-column: 1 / -1; }
+  .site-footer h4 { margin-bottom: 12px; }
+  .site-footer li { margin-bottom: 8px; }
 }
