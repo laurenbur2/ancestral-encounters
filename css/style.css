@@ -503,8 +503,8 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect x='6' y='6' width='12' height='12' fill='none' stroke='%232f8d86' stroke-width='1.5' transform='rotate(45 12 12)'/%3E%3C/svg%3E") no-repeat left center / contain;
 }
 /* belief-card icons (story page) — keep the green, swap the shape */
-.card .icon.icon-toad { width: 30px; height: 30px; background-image: url("../images/icon-toad.svg"); }
-.card .icon.icon-conch { width: 30px; height: 30px; background-image: url("../images/icon-conch.svg"); }
+.card .icon.icon-toad { width: 38px; height: 30px; background-image: url("../images/icon-toad.png"); }
+.card .icon.icon-cactus { width: 30px; height: 30px; background-image: url("../images/icon-cactus.svg"); }
 .card .icon.icon-bridge { width: 30px; height: 30px; background-image: url("../images/icon-bridge.svg"); }
 .card h3 { color: var(--forest); }
 .card p { color: var(--muted); margin-bottom: 0; font-size: 0.98rem; }
