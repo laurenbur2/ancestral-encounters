@@ -585,7 +585,23 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
 
 /* long-form bio (leader detail pages) */
 .prose { max-width: 70ch; margin: 0 auto; }
-.prose .team-photo { margin-bottom: 36px; }
+.bio-photo {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  margin: 0 auto 18px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.bio-title {
+  text-align: center;
+  color: var(--terracotta);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  max-width: 46ch;
+  margin: 0 auto 40px;
+}
 .prose .lead { font-size: 1.2rem; color: var(--ink); line-height: 1.7; }
 .prose h2 {
   font-family: var(--font-display);
