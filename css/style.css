@@ -669,6 +669,22 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
 .gallery::-webkit-scrollbar-track { background: var(--line); border-radius: 10px; }
 .gallery::-webkit-scrollbar-thumb { background: var(--terracotta); border-radius: 10px; }
 
+/* full gallery page — masonry columns that scroll down the page */
+.photo-grid {
+  column-count: 3;
+  column-gap: 16px;
+}
+.photo-grid img {
+  width: 100%;
+  display: block;
+  margin: 0 0 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  break-inside: avoid;
+}
+@media (max-width: 900px) { .photo-grid { column-count: 2; } }
+@media (max-width: 560px) { .photo-grid { column-count: 1; } }
+
 /* small green note under the curriculum heading */
 .section-head .curriculum-meetups {
   color: var(--jade);
