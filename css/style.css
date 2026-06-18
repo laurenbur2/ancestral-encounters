@@ -628,7 +628,7 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
 @media (max-width: 600px) {
   .back-fab { top: 80px; left: 12px; padding: 8px 14px; font-size: 0.76rem; }
   /* shorter photo heroes on phones (offering pages) */
-  .page-head-img { min-height: 52vh; }
+  .page-head-img { min-height: 42vh; padding-top: 56px; padding-bottom: 36px; }
 }
 
 .page-head .hero-creds {
