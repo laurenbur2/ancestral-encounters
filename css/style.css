@@ -227,6 +227,13 @@ body.home .site-header.scrolled {
   color: var(--muted);
 }
 .nav-sub a:hover { color: var(--terracotta); }
+.nav-sub-note {
+  display: block;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--muted);
+  margin-top: 4px;
+}
 
 /* Backdrop behind the drawer (created in js/main.js) */
 .nav-backdrop {
