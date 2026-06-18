@@ -648,6 +648,26 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
 .form textarea { min-height: 140px; resize: vertical; }
 .form-note { font-size: 0.9rem; color: var(--muted); }
 
+/* contact methods (phone / whatsapp / email) */
+.contact-methods {
+  max-width: 620px;
+  margin: 28px auto 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 26px;
+}
+.contact-methods li { text-align: center; }
+.contact-methods h3 {
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  margin: 0 0 4px;
+  color: var(--jade);
+}
+.contact-methods p { margin: 0; font-size: 1.1rem; }
+.contact-methods a { color: var(--terracotta); }
+.contact-methods .contact-sub { font-size: 0.92rem; color: var(--muted); margin-top: 2px; }
+
 /* ---------- Footer ---------- */
 .site-footer {
   position: relative;
