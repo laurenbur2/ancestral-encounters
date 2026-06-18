@@ -626,8 +626,8 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 500;
-  max-width: 40ch;
-  line-height: 1.9;
+  max-width: 72ch;
+  line-height: 1.8;
   margin: 16px auto 0;
 }
 .prose .lead { font-size: 1.2rem; color: var(--ink); line-height: 1.7; }
