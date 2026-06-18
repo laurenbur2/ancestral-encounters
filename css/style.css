@@ -628,7 +628,9 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
 @media (max-width: 600px) {
   .back-fab { top: 80px; left: 12px; padding: 8px 14px; font-size: 0.76rem; }
   /* shorter photo heroes on phones (override the 74vh base, which has higher specificity) */
-  .page-head.page-head-img { min-height: 42vh; padding-top: 56px; padding-bottom: 36px; }
+  .page-head.page-head-img { min-height: 30vh; padding-top: 40px; padding-bottom: 28px; }
+  .page-head.page-head-img h1 { font-size: 2rem; }
+  .page-head.page-head-img p { font-size: 1rem; }
 }
 
 .page-head .hero-creds {
