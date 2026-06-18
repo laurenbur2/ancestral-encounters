@@ -571,9 +571,29 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
 .team-member h3 { color: var(--forest); margin: 0 0 4px; font-size: 1.4rem; }
 .team-role { color: var(--gold); font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 14px; }
 .team-member p { color: var(--muted); }
+.team-link {
+  display: inline-block;
+  margin-top: 4px;
+  color: var(--terracotta);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.team-link::after { content: " \2192"; }
 @media (max-width: 700px) {
   .team { grid-template-columns: 1fr; gap: 44px; }
 }
+
+/* long-form bio (leader detail pages) */
+.prose { max-width: 70ch; margin: 0 auto; }
+.prose .team-photo { margin-bottom: 36px; }
+.prose .lead { font-size: 1.2rem; color: var(--ink); line-height: 1.7; }
+.prose h2 {
+  font-family: var(--font-display);
+  color: var(--forest);
+  font-size: 1.7rem;
+  margin: 1.7em 0 0.5em;
+}
+.prose p { color: var(--ink); margin: 0 0 1.15em; line-height: 1.75; }
 
 /* photo gallery (Infinity School) — horizontal scroll carousel.
    Uniform height + auto width = a film strip that fits mixed orientations. */
