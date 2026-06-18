@@ -673,21 +673,37 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
 .gallery::-webkit-scrollbar-track { background: var(--line); border-radius: 10px; }
 .gallery::-webkit-scrollbar-thumb { background: var(--terracotta); border-radius: 10px; }
 
-/* full gallery page — masonry columns that scroll down the page */
+/* full gallery page — 2 rows of 3, scrolling left/right */
 .photo-grid {
-  column-count: 3;
-  column-gap: 16px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, clamp(220px, 26vw, 320px));
+  grid-auto-columns: calc((100% - 2 * 16px) / 3);
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding-bottom: 16px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-color: var(--terracotta) var(--line);
 }
 .photo-grid img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  margin: 0 0 16px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  break-inside: avoid;
+  scroll-snap-align: start;
 }
-@media (max-width: 900px) { .photo-grid { column-count: 2; } }
-@media (max-width: 560px) { .photo-grid { column-count: 1; } }
+.photo-grid::-webkit-scrollbar { height: 8px; }
+.photo-grid::-webkit-scrollbar-track { background: var(--line); border-radius: 10px; }
+.photo-grid::-webkit-scrollbar-thumb { background: var(--terracotta); border-radius: 10px; }
+@media (max-width: 780px) {
+  .photo-grid {
+    grid-template-rows: repeat(2, clamp(180px, 38vw, 240px));
+    grid-auto-columns: calc((100% - 16px) / 1.6);
+  }
+}
 
 /* small green note under the curriculum heading */
 .section-head .curriculum-meetups {
