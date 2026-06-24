@@ -63,7 +63,7 @@ window.AE_SHOP = {
       id: "bufo-otac-pipe",
       name: "Bufo (Otac) Pipe",
       meta: "Ceremonial · Hand-crafted",
-      price: 0,
+      price: 100,
       image: "images/ceremonial-tools.jpg",
       blurb: "A ceremonial pipe crafted for working with Otac, made and blessed in the traditional way.",
       details: [
