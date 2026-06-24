@@ -1014,6 +1014,67 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
   color: var(--muted);
 }
 
+/* product cards are links to the item's own page */
+a.product, a.product:hover { text-decoration: none; color: inherit; }
+.product .product-blurb { color: var(--muted); font-size: 0.96rem; margin: 0 0 14px; }
+.product .product-cta {
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+}
+
+/* ---------- Product detail page ---------- */
+.product-back {
+  display: inline-block;
+  margin-bottom: clamp(18px, 4vw, 32px);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  color: var(--terracotta);
+  font-weight: 600;
+}
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+}
+.product-detail-media {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, var(--forest-soft), var(--gold));
+}
+.product-detail-media img { width: 100%; height: 100%; object-fit: cover; }
+.product-detail-media.placeholder {
+  display: grid;
+  place-items: center;
+  color: var(--cream);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.product-detail-info .product-meta {
+  font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--jade); margin-bottom: 8px;
+}
+.product-detail-info h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 10px; }
+.product-detail-price {
+  font-family: var(--font-display);
+  color: var(--terracotta);
+  font-size: 1.5rem;
+  margin: 0 0 22px;
+}
+.product-detail-body p { color: var(--ink); margin: 0 0 1em; }
+.product-detail-info .product-buy { margin-top: 22px; max-width: 340px; }
+.product-detail-info .product-buy .btn { width: 100%; text-align: center; }
+.product-note { font-size: 0.85rem; color: var(--muted); margin-top: 14px; max-width: 42ch; }
+.product-missing { text-align: center; padding: clamp(20px, 6vw, 60px) 0; }
+@media (max-width: 760px) {
+  .product-detail { grid-template-columns: 1fr; gap: 28px; }
+  .product-detail-media { max-width: 82%; margin: 0 auto; }
+}
+
 /* ---------- Responsive ---------- */
 /* Scroll-reveal: elements fade + rise as they enter the viewport */
 .reveal { transition: opacity .85s cubic-bezier(.2,.7,.2,1), transform .85s cubic-bezier(.2,.7,.2,1); }
