@@ -64,7 +64,7 @@ window.AE_SHOP = {
       name: "Bufo (Otac) Pipe",
       meta: "Ceremonial · Hand-crafted",
       price: 100,
-      image: "images/ceremonial-tools.jpg",
+      image: null,
       blurb: "A ceremonial pipe crafted for working with Otac, made and blessed in the traditional way.",
       details: [
         "A ceremonial pipe crafted for working with Otac, made and blessed in the traditional way.",
@@ -77,7 +77,7 @@ window.AE_SHOP = {
       name: "Shell & Bead Necklace",
       meta: "Comcaac · Adornment",
       price: 20,
-      image: null,
+      image: "images/ceremonial-tools.jpg",
       blurb: "A ceremonial necklace of Sea of Cortez shell and hand-strung beads, made by Comcaac artisans.",
       details: [
         "A ceremonial necklace of Sea of Cortez shell and hand-strung beads, made by Comcaac artisans.",
