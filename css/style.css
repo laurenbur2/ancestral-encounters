@@ -901,6 +901,119 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
 /* small gold subtitle beneath a page-head title (e.g. "Bufo Facilitator Training") */
 .page-head .ph-sub { color: var(--gold); font-size: 0.82rem; margin: 16px auto 18px; }
 
+/* ---------- Call a Ceremony (private / traveling ceremony CTA) ---------- */
+.call-ceremony {
+  background: linear-gradient(150deg, var(--forest), var(--jade-deep));
+  color: var(--cream);
+}
+.call-ceremony .eyebrow { color: var(--gold); }
+.call-ceremony h2 { color: #fff; }
+.call-ceremony p { color: rgba(255, 255, 255, 0.9); }
+.call-ceremony .call-ceremony-invite {
+  font-family: var(--font-quote);
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  color: var(--gold);
+  margin: 0.6em 0 1.4em;
+}
+.call-ceremony .btn-outline {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.call-ceremony .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: #fff;
+  color: #fff;
+}
+.cta-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---------- Shop ---------- */
+.shop-notice {
+  max-width: 760px;
+  margin: 0 auto 2.6rem;
+  padding: 18px 24px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  border-radius: 10px;
+  background: var(--cream);
+  color: var(--muted);
+  font-size: 0.96rem;
+  text-align: center;
+}
+.shop-notice strong { color: var(--forest); }
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+.product {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.product .product-media {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, var(--forest-soft), var(--gold));
+  overflow: hidden;
+}
+.product .product-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.product:hover .product-media img { transform: scale(1.04); }
+.product .product-media.placeholder {
+  display: grid;
+  place-items: center;
+  color: var(--cream);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.product .product-body {
+  padding: 24px 26px 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.product h3 { color: var(--forest); margin: 0 0 8px; }
+.product .product-body p { color: var(--muted); font-size: 0.96rem; margin: 0 0 14px; }
+.product .product-meta {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--jade);
+  margin-bottom: 6px;
+}
+.product .product-price {
+  font-family: var(--font-display);
+  color: var(--terracotta);
+  font-size: 1.3rem;
+  margin: 4px 0 18px;
+}
+.product-buy { margin-top: auto; }
+.product-buy .btn { width: 100%; text-align: center; }
+.product-paid {
+  color: var(--jade);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin: 0;
+}
+.shop-support {
+  max-width: 64ch;
+  margin: clamp(20px, 4vw, 40px) auto 0;
+  text-align: center;
+  color: var(--muted);
+}
+
 /* ---------- Responsive ---------- */
 /* Scroll-reveal: elements fade + rise as they enter the viewport */
 .reveal { transition: opacity .85s cubic-bezier(.2,.7,.2,1), transform .85s cubic-bezier(.2,.7,.2,1); }
