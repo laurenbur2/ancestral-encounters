@@ -50,19 +50,10 @@
 
   var slot = document.getElementById("product-buy");
   var status = document.getElementById("product-status");
-  var price = product.price || 0;
 
-  if (price <= 0) {
-    // Price on request — send them to message us.
-    var a = document.createElement("a");
-    a.className = "btn";
-    a.href = shop.CONTACT_URL + "?item=" + encodeURIComponent(product.name);
-    a.textContent = "Message us to purchase";
-    slot.appendChild(a);
-    return;
-  }
-
-  // Priced item — add to cart.
+  // Every item can be added to the cart. Price-on-request items are added
+  // too; at checkout the cart routes those to a "request these pieces"
+  // message so we can confirm pricing before payment.
   var addBtn = document.createElement("button");
   addBtn.type = "button";
   addBtn.className = "btn";

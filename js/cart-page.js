@@ -38,12 +38,16 @@
     }
 
     var subtotal = 0;
+    var hasRequest = false;
     var summaryParts = [];
     var rows = items.map(function (it) {
       var p = it.product;
-      var line = (p.price || 0) * it.qty;
-      subtotal += line;
+      var priced = (p.price || 0) > 0;
+      if (priced) subtotal += p.price * it.qty;
+      else hasRequest = true;
       summaryParts.push(p.name + " x" + it.qty);
+      var unit = priced ? shop.formatPrice(p.price) + " each" : "Price on request";
+      var lineText = priced ? shop.formatPrice(p.price * it.qty) : "Price on request";
       var media = p.image
         ? '<img src="' + p.image + '" alt="' + p.name + '" />'
         : '<span class="cart-item-noimg">No photo</span>';
@@ -53,7 +57,7 @@
           '<div class="cart-item-info">' +
             '<a class="cart-item-name" href="product.html?id=' + p.id + '"><h3>' + p.name + "</h3></a>" +
             '<p class="cart-item-meta">' + p.meta + "</p>" +
-            '<p class="cart-item-unit">' + shop.formatPrice(p.price) + " each</p>" +
+            '<p class="cart-item-unit">' + unit + "</p>" +
             '<button class="cart-remove" data-act="remove" type="button">Remove</button>' +
           "</div>" +
           '<div class="cart-item-qty" role="group" aria-label="Quantity">' +
@@ -61,18 +65,25 @@
             '<span class="cart-qty-val">' + it.qty + "</span>" +
             '<button type="button" data-act="inc" aria-label="Increase quantity">+</button>' +
           "</div>" +
-          '<div class="cart-item-line">' + shop.formatPrice(line) + "</div>" +
+          '<div class="cart-item-line">' + lineText + "</div>" +
         "</div>"
       );
     }).join("");
 
     state.subtotal = subtotal;
+    state.hasRequest = hasRequest;
     state.summary = summaryParts.join(", ");
+
+    var subtotalLabel = hasRequest && subtotal === 0 ? "Price on request" : shop.formatPrice(subtotal);
+    var requestNote = hasRequest
+      ? '<p class="cart-summary-note">Some pieces are priced on request &mdash; we will confirm pricing before any payment.</p>'
+      : "";
 
     root.innerHTML =
       '<div class="cart-list">' + rows + "</div>" +
       '<div class="cart-summary">' +
-        '<div class="cart-subtotal"><span>Subtotal</span><strong>' + shop.formatPrice(subtotal) + "</strong></div>" +
+        '<div class="cart-subtotal"><span>Subtotal</span><strong>' + subtotalLabel + "</strong></div>" +
+        requestNote +
         '<p class="cart-summary-note">Shipping and any taxes are arranged with you directly after your order.</p>' +
         '<div class="cart-checkout" id="cart-checkout"></div>' +
       "</div>";
@@ -102,11 +113,16 @@
     var box = document.getElementById("cart-checkout");
     if (!box) return;
 
-    if (!configured) {
+    // Use the message-us flow when checkout isn't connected yet, or when the
+    // order contains a price-on-request item we can't auto-charge.
+    if (!configured || state.hasRequest) {
       var href = shop.CONTACT_URL + "?order=" + encodeURIComponent(state.summary);
+      var msg = state.hasRequest
+        ? "Send us your order and we will confirm pricing, secure payment, and delivery with care."
+        : "Send us your order and we will arrange secure payment and delivery with care.";
+      var lead = configured ? "" : "<strong>Secure checkout is being set up.</strong> ";
       box.innerHTML =
-        '<p class="cart-note"><strong>Secure checkout is being set up.</strong> ' +
-        "Send us your order and we will arrange secure payment and delivery with care.</p>" +
+        '<p class="cart-note">' + lead + msg + "</p>" +
         '<a class="btn" href="' + href + '">Request these pieces</a>';
       return;
     }
