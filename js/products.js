@@ -16,11 +16,25 @@
 //    details     an array of paragraphs shown on the item's own page.
 //
 //  To add a product, copy a { ... } block and change the fields.
-//  PayPal setup lives at the top of js/product.js.
+//
+//  CHECKOUT / SHIPPING / TAX SETTINGS are just below.
 // ============================================================
 window.AE_SHOP = {
-  PAYPAL_CLIENT_ID: "PASTE_YOUR_PAYPAL_CLIENT_ID_HERE",
-  PAYPAL_CURRENCY: "USD",
+  CURRENCY: "USD",
+
+  // ---- Shipping & tax (shown in the cart) -----------------------
+  // Flat shipping fee in dollars. Set to 0 for free shipping.  (Sample value.)
+  SHIPPING_FLAT: 15,
+  // Sales tax rate as a decimal: 0.0825 = 8.25%. Set 0 for no tax.  (Sample value.)
+  TAX_RATE: 0.0825,
+
+  // ---- Stripe checkout ------------------------------------------
+  // A static site can't run Stripe by itself. Deploy the small checkout
+  // function (see stripe-checkout-function-example.js) to Vercel/Netlify,
+  // then paste its URL here. While this is empty, the cart shows a
+  // "Request these pieces" button so the shop still works.
+  STRIPE_CHECKOUT_URL: "",
+
   CONTACT_URL: "contact.html",
 
   products: [
@@ -83,7 +97,7 @@ window.AE_SHOP = {
   formatPrice: function (price) {
     if (!price || price <= 0) return "Price on request";
     try {
-      return price.toLocaleString("en-US", { style: "currency", currency: this.PAYPAL_CURRENCY });
+      return price.toLocaleString("en-US", { style: "currency", currency: this.CURRENCY });
     } catch (e) {
       return "$" + price.toFixed(2);
     }
