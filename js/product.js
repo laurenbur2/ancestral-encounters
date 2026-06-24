@@ -1,12 +1,10 @@
 // Ancestral Encounters — single product page
-// ============================================================
-//  PAYPAL SETUP lives in js/products.js (PAYPAL_CLIENT_ID).
-//  Until a real Client ID is added, the buy button becomes a
-//  "Message us to purchase" link so the page always works. Once
-//  the Client ID is in place, live PayPal + card buttons appear.
-// ============================================================
+// Renders the item from js/products.js (by ?id=) and adds it to the cart.
+// Items with a price show "Add to cart"; price-on-request items show
+// "Message us to purchase" instead. Checkout happens on cart.html.
 (function () {
   var shop = window.AE_SHOP;
+  var cart = window.AE_CART;
   var root = document.getElementById("product-detail");
   if (!shop || !root) return;
 
@@ -46,59 +44,34 @@
         '<p class="product-detail-price">' + shop.formatPrice(product.price) + "</p>" +
         '<div class="product-detail-body">' + details + "</div>" +
         '<div class="product-buy" id="product-buy"></div>' +
-        '<p class="product-note" id="product-note" hidden>Secure checkout is being set up. Message us and we will arrange payment and delivery with care.</p>' +
+        '<p class="product-status" id="product-status" aria-live="polite"></p>' +
       "</div>" +
     "</div>";
 
   var slot = document.getElementById("product-buy");
-  var note = document.getElementById("product-note");
+  var status = document.getElementById("product-status");
+  var price = product.price || 0;
 
-  function inquireButton() {
+  if (price <= 0) {
+    // Price on request — send them to message us.
     var a = document.createElement("a");
     a.className = "btn";
     a.href = shop.CONTACT_URL + "?item=" + encodeURIComponent(product.name);
     a.textContent = "Message us to purchase";
-    return a;
+    slot.appendChild(a);
+    return;
   }
 
-  function showFallback() {
-    if (note) note.hidden = false;
-    if (slot && !slot.children.length) slot.appendChild(inquireButton());
-  }
+  // Priced item — add to cart.
+  var addBtn = document.createElement("button");
+  addBtn.type = "button";
+  addBtn.className = "btn";
+  addBtn.textContent = "Add to cart";
+  slot.appendChild(addBtn);
 
-  var configured = shop.PAYPAL_CLIENT_ID && shop.PAYPAL_CLIENT_ID.indexOf("PASTE_") === -1;
-  var price = product.price || 0;
-
-  // No price set yet, or PayPal not configured -> message-us fallback.
-  if (!configured || price <= 0) { showFallback(); return; }
-
-  var s = document.createElement("script");
-  s.src = "https://www.paypal.com/sdk/js?client-id=" + encodeURIComponent(shop.PAYPAL_CLIENT_ID) +
-          "&currency=" + encodeURIComponent(shop.PAYPAL_CURRENCY) + "&components=buttons";
-  s.onload = renderButtons;
-  s.onerror = showFallback;
-  document.head.appendChild(s);
-
-  function renderButtons() {
-    if (!window.paypal) { showFallback(); return; }
-    paypal.Buttons({
-      style: { layout: "vertical", color: "gold", shape: "pill", label: "pay" },
-      createOrder: function (data, actions) {
-        return actions.order.create({
-          purchase_units: [{
-            description: product.name,
-            amount: { value: price.toFixed(2), currency_code: shop.PAYPAL_CURRENCY }
-          }]
-        });
-      },
-      onApprove: function (data, actions) {
-        return actions.order.capture().then(function (details) {
-          var name = (details.payer && details.payer.name && details.payer.name.given_name) || "friend";
-          slot.innerHTML = '<p class="product-paid">Thank you, ' + name +
-            ". Your order is received. We will be in touch about delivery.</p>";
-        });
-      },
-      onError: function () { slot.innerHTML = ""; showFallback(); }
-    }).render(slot);
-  }
+  addBtn.addEventListener("click", function () {
+    cart.add(product.id, 1);
+    var n = cart.getCart()[product.id] || 1;
+    status.innerHTML = "Added to cart (" + n + ' in cart). <a href="cart.html">View cart &rarr;</a>';
+  });
 })();
