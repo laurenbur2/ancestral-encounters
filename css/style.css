@@ -1077,10 +1077,12 @@ a.product, a.product:hover { text-decoration: none; color: inherit; }
 .product-status { margin-top: 14px; font-size: 0.95rem; color: var(--jade); min-height: 1.2em; }
 .product-status a { color: var(--terracotta); font-weight: 600; }
 
-/* ---------- Cart icon in the menu ---------- */
-.nav-shop { display: flex; align-items: center; gap: 16px; }
-.nav-cart { position: relative; display: inline-flex; align-items: center; color: var(--ink); }
+/* ---------- Cart icon (in the header, beside the menu toggle) ---------- */
+.nav-cart { position: relative; display: inline-flex; align-items: center; color: var(--forest); }
 .nav-cart:hover { color: var(--terracotta); text-decoration: none; }
+/* sits just left of the three-bar toggle, both pushed to the right */
+.nav-cart-header { margin-left: auto; margin-right: 18px; }
+body.home .site-header .nav-cart-header { color: var(--forest); }
 .cart-count {
   position: absolute; top: -7px; right: -10px;
   min-width: 17px; height: 17px; padding: 0 4px;
