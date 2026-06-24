@@ -1065,6 +1065,19 @@ a.product, a.product:hover { text-decoration: none; color: inherit; }
   font-size: 1.5rem;
   margin: 0 0 22px;
 }
+.product-size { margin: 0 0 22px; max-width: 340px; }
+.product-size label {
+  display: block; font-weight: 600; font-size: 0.8rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--forest); margin-bottom: 8px;
+}
+.product-size select {
+  width: 100%; padding: 12px 14px;
+  border: 1.5px solid var(--line); border-radius: 10px;
+  font-family: inherit; font-size: 1rem; background: var(--cream); color: var(--ink);
+  cursor: pointer;
+}
+.product-size select:focus { outline: none; border-color: var(--terracotta); }
 .product-detail-body p { color: var(--ink); margin: 0 0 1em; }
 .product-detail-info .product-buy { margin-top: 22px; max-width: 340px; }
 .product-detail-info .product-buy .btn { width: 100%; text-align: center; }

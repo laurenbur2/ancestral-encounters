@@ -16,11 +16,20 @@
   function lines() {
     var c = cart.getCart();
     var out = [];
-    for (var id in c) {
-      if (!c.hasOwnProperty(id)) continue;
-      var p = shop.find(id);
+    for (var key in c) {
+      if (!c.hasOwnProperty(key)) continue;
+      // a cart key is "<product-id>" or "<product-id>::<size-label>"
+      var parts = key.split("::");
+      var p = shop.find(parts[0]);
       if (!p) continue; // product no longer exists
-      out.push({ product: p, qty: c[id] });
+      var sizeLabel = parts.length > 1 ? parts[1] : null;
+      var unit = p.price || 0;
+      if (sizeLabel && p.sizes) {
+        for (var i = 0; i < p.sizes.length; i++) {
+          if (p.sizes[i].label === sizeLabel) { unit = p.sizes[i].price; break; }
+        }
+      }
+      out.push({ key: key, product: p, size: sizeLabel, unit: unit, qty: c[key] });
     }
     return out;
   }
@@ -42,20 +51,21 @@
     var summaryParts = [];
     var rows = items.map(function (it) {
       var p = it.product;
-      var priced = (p.price || 0) > 0;
-      if (priced) subtotal += p.price * it.qty;
+      var priced = it.unit > 0;
+      if (priced) subtotal += it.unit * it.qty;
       else hasRequest = true;
-      summaryParts.push(p.name + " x" + it.qty);
-      var unit = priced ? shop.formatPrice(p.price) + " each" : "Price on request";
-      var lineText = priced ? shop.formatPrice(p.price * it.qty) : "Price on request";
+      var displayName = p.name + (it.size ? " &middot; " + it.size : "");
+      summaryParts.push(p.name + (it.size ? " (" + it.size + ")" : "") + " x" + it.qty);
+      var unit = priced ? shop.formatPrice(it.unit) + " each" : "Price on request";
+      var lineText = priced ? shop.formatPrice(it.unit * it.qty) : "Price on request";
       var media = p.image
         ? '<img src="' + p.image + '" alt="' + p.name + '" />'
         : '<span class="cart-item-noimg">No photo</span>';
       return (
-        '<div class="cart-item" data-id="' + p.id + '">' +
+        '<div class="cart-item" data-id="' + it.key + '">' +
           '<a class="cart-item-media" href="product.html?id=' + p.id + '">' + media + "</a>" +
           '<div class="cart-item-info">' +
-            '<a class="cart-item-name" href="product.html?id=' + p.id + '"><h3>' + p.name + "</h3></a>" +
+            '<a class="cart-item-name" href="product.html?id=' + p.id + '"><h3>' + displayName + "</h3></a>" +
             '<p class="cart-item-meta">' + p.meta + "</p>" +
             '<p class="cart-item-unit">' + unit + "</p>" +
             '<button class="cart-remove" data-act="remove" type="button">Remove</button>' +

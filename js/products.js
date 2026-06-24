@@ -28,6 +28,14 @@ window.AE_SHOP = {
       id: "hand-woven-basket",
       name: "Hand-Woven Basket",
       meta: "Comcaac · Woven by hand",
+      // When a product has "sizes", a Small/Medium/Large dropdown appears and
+      // the price follows the chosen size. (These are sample prices — edit
+      // the numbers, labels, or remove "sizes" entirely to go back to one price.)
+      sizes: [
+        { label: "Small", price: 120 },
+        { label: "Medium", price: 180 },
+        { label: "Large", price: 240 }
+      ],
       price: 0,
       image: "images/comcaac-basket.jpg",
       blurb: "A traditional Comcaac coil basket, woven from desert torote and dyed with natural pigments.",
@@ -79,5 +87,18 @@ window.AE_SHOP = {
     } catch (e) {
       return "$" + price.toFixed(2);
     }
+  },
+  // Lowest price across sizes, for "From $X" labels on the shop grid.
+  startingPrice: function (p) {
+    if (p.sizes && p.sizes.length) {
+      var min = p.sizes[0].price;
+      for (var i = 1; i < p.sizes.length; i++) { if (p.sizes[i].price < min) min = p.sizes[i].price; }
+      return min;
+    }
+    return p.price || 0;
+  },
+  priceLabel: function (p) {
+    if (p.sizes && p.sizes.length) return "From " + this.formatPrice(this.startingPrice(p));
+    return this.formatPrice(p.price);
   }
 };

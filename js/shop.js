@@ -21,7 +21,7 @@
         '<p class="product-meta">' + p.meta + "</p>" +
         "<h3>" + p.name + "</h3>" +
         '<p class="product-blurb">' + p.blurb + "</p>" +
-        '<p class="product-price">' + shop.formatPrice(p.price) + "</p>" +
+        '<p class="product-price">' + shop.priceLabel(p) + "</p>" +
         '<span class="btn btn-outline product-cta">See options</span>' +
       "</div>";
 

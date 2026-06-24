@@ -35,14 +35,30 @@
     .map(function (para) { return "<p>" + para + "</p>"; })
     .join("");
 
+  var hasSizes = !!(product.sizes && product.sizes.length);
+  var initialPrice = hasSizes ? product.sizes[0].price : (product.price || 0);
+
+  var sizeHtml = "";
+  if (hasSizes) {
+    var opts = product.sizes.map(function (s, i) {
+      return '<option value="' + i + '">' + s.label + " &mdash; " + shop.formatPrice(s.price) + "</option>";
+    }).join("");
+    sizeHtml =
+      '<div class="product-size">' +
+        '<label for="size-select">Size</label>' +
+        '<select id="size-select">' + opts + "</select>" +
+      "</div>";
+  }
+
   root.innerHTML =
     '<div class="product-detail">' +
       media +
       '<div class="product-detail-info">' +
         '<p class="product-meta">' + product.meta + "</p>" +
         "<h1>" + product.name + "</h1>" +
-        '<p class="product-detail-price">' + shop.formatPrice(product.price) + "</p>" +
+        '<p class="product-detail-price" id="product-price">' + shop.formatPrice(initialPrice) + "</p>" +
         '<div class="product-detail-body">' + details + "</div>" +
+        sizeHtml +
         '<div class="product-buy" id="product-buy"></div>' +
         '<p class="product-status" id="product-status" aria-live="polite"></p>' +
       "</div>" +
@@ -50,6 +66,19 @@
 
   var slot = document.getElementById("product-buy");
   var status = document.getElementById("product-status");
+  var priceEl = document.getElementById("product-price");
+  var sizeSel = document.getElementById("size-select");
+
+  function selectedSize() {
+    if (!hasSizes) return null;
+    return product.sizes[parseInt(sizeSel.value, 10) || 0];
+  }
+
+  if (sizeSel) {
+    sizeSel.addEventListener("change", function () {
+      priceEl.textContent = shop.formatPrice(selectedSize().price);
+    });
+  }
 
   // Every item can be added to the cart. Price-on-request items are added
   // too; at checkout the cart routes those to a "request these pieces"
@@ -61,8 +90,11 @@
   slot.appendChild(addBtn);
 
   addBtn.addEventListener("click", function () {
-    cart.add(product.id, 1);
-    var n = cart.getCart()[product.id] || 1;
-    status.innerHTML = "Added to cart (" + n + ' in cart). <a href="cart.html">View cart &rarr;</a>';
+    var size = selectedSize();
+    var key = size ? product.id + "::" + size.label : product.id;
+    cart.add(key, 1);
+    var n = cart.getCart()[key] || 1;
+    var what = size ? product.name + " (" + size.label + ")" : product.name;
+    status.innerHTML = "Added " + what + " to cart (" + n + ' in cart). <a href="cart.html">View cart &rarr;</a>';
   });
 })();
