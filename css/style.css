@@ -901,7 +901,7 @@ body.intro-done #preloader { opacity: 0; visibility: hidden; }
 /* small gold subtitle beneath a page-head title (e.g. "Bufo Facilitator Training") */
 .page-head .ph-sub { color: var(--gold); font-size: 0.82rem; margin: 16px auto 18px; }
 
-/* ---------- Call a Ceremony (private / traveling ceremony CTA) ---------- */
+/* ---------- Private Ceremony (private / traveling ceremony CTA) ---------- */
 .call-ceremony {
   background: linear-gradient(150deg, var(--forest), var(--jade-deep));
   color: var(--cream);
