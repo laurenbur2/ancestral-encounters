@@ -80,6 +80,16 @@
     });
   }
 
+  // Coming-soon mode: nothing is for sale yet, so show a disabled
+  // "Coming soon" label instead of an add-to-cart button.
+  if (shop.COMING_SOON) {
+    var soon = document.createElement("span");
+    soon.className = "btn btn-outline is-coming-soon product-cta-soon";
+    soon.textContent = "Coming soon";
+    slot.appendChild(soon);
+    return;
+  }
+
   // Every item can be added to the cart. Price-on-request items are added
   // too; at checkout the cart routes those to a "request these pieces"
   // message so we can confirm pricing before payment.

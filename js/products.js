@@ -22,6 +22,12 @@
 window.AE_SHOP = {
   CURRENCY: "USD",
 
+  // ---- Shop availability ----------------------------------------
+  // While this is true, the shop is in preview mode: every item shows
+  // "Coming soon" and nothing can be added to the cart or checked out.
+  // Set it to false when you are ready to start selling.
+  COMING_SOON: true,
+
   // ---- Shipping & tax (shown in the cart) -----------------------
   // Flat shipping fee in dollars. Set to 0 for free shipping.  (Sample value.)
   SHIPPING_FLAT: 15,

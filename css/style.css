@@ -1023,6 +1023,27 @@ a.product, a.product:hover { text-decoration: none; color: inherit; }
   text-align: center;
 }
 
+/* "Coming soon" label used while the shop is in preview mode. Looks like a
+   button but is intentionally muted and non-interactive. */
+.product-cta-soon,
+.btn.product-cta-soon {
+  display: inline-block;
+  padding: 17px 38px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(43, 38, 32, 0.18);
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: default;
+}
+.product-cta-soon:hover { background: transparent; color: var(--muted); border-color: rgba(43, 38, 32, 0.18); }
+.product.is-coming-soon { cursor: default; }
+.product.is-coming-soon:hover .product-media img { transform: none; }
+
 /* ---------- Product detail page ---------- */
 .product-back {
   display: inline-block;

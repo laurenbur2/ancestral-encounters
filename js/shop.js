@@ -6,14 +6,21 @@
   var grid = document.getElementById("shop-grid");
   if (!shop || !grid) return;
 
+  var comingSoon = !!shop.COMING_SOON;
+
   shop.products.forEach(function (p) {
-    var card = document.createElement("a");
-    card.className = "product card reveal is-visible";
-    card.href = "product.html?id=" + encodeURIComponent(p.id);
+    // In coming-soon mode the card is not a link (nothing to buy yet).
+    var card = document.createElement(comingSoon ? "div" : "a");
+    card.className = "product card reveal is-visible" + (comingSoon ? " is-coming-soon" : "");
+    if (!comingSoon) card.href = "product.html?id=" + encodeURIComponent(p.id);
 
     var media = p.image
       ? '<div class="product-media"><img src="' + p.image + '" alt="' + p.name + '" loading="lazy" /></div>'
       : '<div class="product-media placeholder">Photo coming soon</div>';
+
+    var cta = comingSoon
+      ? '<span class="product-cta product-cta-soon">Coming soon</span>'
+      : '<span class="btn btn-outline product-cta">See options</span>';
 
     card.innerHTML =
       media +
@@ -22,7 +29,7 @@
         "<h3>" + p.name + "</h3>" +
         '<p class="product-blurb">' + p.blurb + "</p>" +
         '<p class="product-price">' + shop.priceLabel(p) + "</p>" +
-        '<span class="btn btn-outline product-cta">See options</span>' +
+        cta +
       "</div>";
 
     grid.appendChild(card);
