@@ -152,6 +152,10 @@ body.home .site-header.scrolled {
   transition: transform .4s cubic-bezier(.5,.05,.2,1);
   z-index: 95;
   box-shadow: -14px 0 44px rgba(20,15,12,0.20);
+  /* Let the panel scroll when the expanded sub-menu is taller than the screen */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 .nav-links.open { transform: translateX(0); }
 .nav-links a {
@@ -217,7 +221,7 @@ body.home .site-header.scrolled {
 }
 .nav-group:hover .nav-sub,
 .nav-group.open .nav-sub {
-  max-height: 280px;
+  max-height: 640px;
   opacity: 1;
   margin-top: 18px;
 }
