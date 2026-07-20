@@ -275,6 +275,31 @@ body.home .site-header.scrolled {
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* ---------- Language toggle (EN / ES) ---------- */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 18px;
+  padding: 5px 11px;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: var(--muted);
+  transition: border-color .25s ease, color .25s ease;
+}
+.lang-toggle:hover { border-color: var(--terracotta); }
+.lang-toggle .sep { opacity: 0.5; font-weight: 400; }
+.lang-toggle span[data-lang] { opacity: 0.45; transition: opacity .2s ease, color .2s ease; }
+.lang-toggle span[data-lang].active { opacity: 1; color: var(--forest); }
+body.home .site-header .lang-toggle { color: var(--forest); border-color: rgba(35, 49, 80, 0.28); }
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-block;
