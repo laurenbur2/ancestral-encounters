@@ -241,7 +241,7 @@ var TR = {
 "Arrive, and be taken care of": "Llega, y déjate cuidar",
 "From the airport to the ranch and back, everything is arranged so you can focus entirely on the experience: a place to rest, traditional meals, the ceremonies, and the teachings that hold them.": "Desde el aeropuerto al rancho y de regreso, todo está organizado para que puedas concentrarte por completo en la experiencia: un lugar para descansar, comidas tradicionales, las ceremonias y las enseñanzas que las sostienen.",
 "housing · food · ceremonies · teachings · airport transfers, both ways": "alojamiento · comida · ceremonias · enseñanzas · traslados al aeropuerto, ida y vuelta",
-"$2,200 per participant": "$2,200 por participante",
+"$300-$500 a night": "$300-$500 por noche",
 "Inquire about Meet Bufo": "Consulta sobre Conoce a Bufo",
 "Meeting Bufo": "Conociendo a Bufo",
 "Face to face with the medicine": "Cara a cara con la medicina",
