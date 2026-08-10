@@ -100,26 +100,109 @@ document.documentElement.classList.add("js");
   });
 })();
 
-// Contact form — front-end only for now.
-// To receive messages, connect a free service like Formspree:
-//   1. Sign up at https://formspree.io
-//   2. Set the form's action to your Formspree URL and method="POST"
-//   3. Remove the preventDefault handler below.
+// Contact form — posts to a Supabase Edge Function ("contact"), which stores
+// the message and emails it to the team via Resend (see supabase/functions/
+// contact/index.ts). The submitter's email is used as the reply-to, so
+// replying in your inbox goes straight back to them.
+//
+// Both values below are safe to expose in client code: the URL is public, and
+// the anon key is a publishable key gated by Row Level Security. The Resend
+// secret key lives only inside the Edge Function, never here.
+var AE_CONTACT = {
+  // e.g. "https://abcdefgh.supabase.co"
+  SUPABASE_URL: "https://brzogufvxeniikzkxlot.supabase.co",
+  // Supabase anon / publishable key
+  SUPABASE_ANON_KEY: "sb_publishable_SUyhp3xGCxUkzLUqr-mShA_m8ewuD-S",
+};
 (function () {
   var form = document.getElementById("contact-form");
   var status = document.getElementById("form-status");
   if (!form) return;
 
+  // Pick EN/ES copy to match the site language toggle (stored by js/i18n.js).
+  function isSpanish() {
+    try {
+      return localStorage.getItem("ae_lang") === "es";
+    } catch (e) {
+      return false;
+    }
+  }
+  var COPY = {
+    invalid: {
+      en: "Please fill in your name, email, and message.",
+      es: "Por favor completa tu nombre, correo y mensaje.",
+    },
+    sending: {
+      en: "Sending your message...",
+      es: "Enviando tu mensaje...",
+    },
+    success: {
+      en: "Thank you for reaching out. Your message is on its way, and we'll reply soon.",
+      es: "Gracias por escribirnos. Tu mensaje está en camino y te responderemos pronto.",
+    },
+    error: {
+      en: "Something went wrong sending your message. Please try again, or email us directly.",
+      es: "Algo salió mal al enviar tu mensaje. Inténtalo de nuevo o escríbenos directamente.",
+    },
+  };
+  function t(key) {
+    return COPY[key][isSpanish() ? "es" : "en"];
+  }
+
+  var ERROR_COLOR = "#b5613a";
+  var SUCCESS_COLOR = "#2f4a3c";
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     if (!form.checkValidity()) {
-      status.textContent = "Please fill in your name, email, and message.";
-      status.style.color = "#b5613a";
+      status.textContent = t("invalid");
+      status.style.color = ERROR_COLOR;
       return;
     }
-    status.textContent =
-      "Thank you for reaching out. (This demo form isn't connected yet — see js/main.js to link it to email.)";
-    status.style.color = "#2f4a3c";
-    form.reset();
+
+    var button = form.querySelector('button[type="submit"]');
+    if (button) button.disabled = true;
+    status.textContent = t("sending");
+    status.style.color = SUCCESS_COLOR;
+
+    var data = Object.fromEntries(new FormData(form).entries());
+    fetch(AE_CONTACT.SUPABASE_URL + "/functions/v1/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        apikey: AE_CONTACT.SUPABASE_ANON_KEY,
+        Authorization: "Bearer " + AE_CONTACT.SUPABASE_ANON_KEY,
+      },
+      body: JSON.stringify(data),
+    })
+      .then(function (res) {
+        return res.json().then(function (body) {
+          return { ok: res.ok, body: body };
+        });
+      })
+      .then(function (result) {
+        var body = result.body || {};
+        // The message is saved to the database the moment it reaches the
+        // function, even before Resend email notifications are configured. So
+        // treat "saved, email pending" as success too — the visitor always gets
+        // a confirmation and no message is ever lost.
+        var savedEmailPending = body.error === "Email not configured";
+        if ((result.ok && body.success) || savedEmailPending) {
+          status.textContent = t("success");
+          status.style.color = SUCCESS_COLOR;
+          form.reset();
+        } else {
+          status.textContent = t("error");
+          status.style.color = ERROR_COLOR;
+        }
+      })
+      .catch(function () {
+        status.textContent = t("error");
+        status.style.color = ERROR_COLOR;
+      })
+      .finally(function () {
+        if (button) button.disabled = false;
+      });
   });
 })();
